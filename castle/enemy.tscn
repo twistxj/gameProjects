@@ -1,5 +1,6 @@
-[gd_scene load_steps=29 format=3 uid="uid://cv0d4e1twgfph"]
+[gd_scene load_steps=30 format=3 uid="uid://cv0d4e1twgfph"]
 
+[ext_resource type="Script" path="res://Skele.gd" id="1_i7n4j"]
 [ext_resource type="Texture2D" uid="uid://cigfbyitm43a2" path="res://Assets/Skeleton Sprite Pack/Skeleton/Sprite Sheets/Skeleton Idle.png" id="1_lnq07"]
 [ext_resource type="Texture2D" uid="uid://cymn2yjeo1hcj" path="res://Assets/Skeleton Sprite Pack/Skeleton/Sprite Sheets/Skeleton Walk.png" id="2_s04u4"]
 
@@ -193,11 +194,13 @@ animations = [{
 radius = 9.0
 height = 26.0
 
-[node name="Enemy" type="Node2D"]
+[node name="EnemySkeleton" type="Node2D"]
 
 [node name="Skele" type="CharacterBody2D" parent="."]
 position = Vector2(0, -1)
-metadata/_edit_group_ = true
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_i7n4j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Skele"]
 sprite_frames = SubResource("SpriteFrames_c86w4")
@@ -208,3 +211,11 @@ frame_progress = 0.397765
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Skele"]
 position = Vector2(-5, 4)
 shape = SubResource("CapsuleShape2D_dxcmx")
+
+[node name="DownRay" type="RayCast2D" parent="Skele"]
+position = Vector2(4, 1)
+
+[node name="RightRay" type="RayCast2D" parent="Skele"]
+position = Vector2(4, 1)
+target_position = Vector2(10, 0)
+collision_mask = 3

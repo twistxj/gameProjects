@@ -1,11 +1,4 @@
 extends CharacterBody2D
-
-#@onready var _animated_sprite = $AnimatedSprite2D
-
-# Run idle animation
-#func _process(_delta):
-	#_animated_sprite.play("idle")
-	
 # Setup constants
 const UP = Vector2(0,-1)
 const GRAVITY = 50

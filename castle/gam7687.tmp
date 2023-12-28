@@ -500,4 +500,4 @@ shape = SubResource("CapsuleShape2D_madyp")
 zoom = Vector2(2, 2)
 
 [node name="Enemy" parent="." instance=ExtResource("36_20pj7")]
-position = Vector2(648, 374)
+position = Vector2(648, 373)
