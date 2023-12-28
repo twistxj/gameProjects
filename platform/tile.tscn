@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2kny1gdaq6er"]
+
+[ext_resource type="Texture2D" uid="uid://cv2tte1lau75n" path="res://256x256 Pixel Textures/256x256/256_Grass 02 Blades.png" id="1_2y7hx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0qhqh"]
+size = Vector2(256, 256)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2y7hx")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+shape = SubResource("RectangleShape2D_0qhqh")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(320, 0)
+texture = ExtResource("1_2y7hx")
+metadata/_edit_group_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D2/StaticBody2D"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_0qhqh")
