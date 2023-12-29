@@ -476,7 +476,7 @@ animations = [{
 radius = 9.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qrc5j"]
-size = Vector2(16, 35.5)
+size = Vector2(16, 31)
 
 [node name="Game" type="Node2D"]
 
@@ -495,8 +495,6 @@ script = ExtResource("2_t43jh")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_o4veq")
 animation = &"attack"
-frame = 4
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(-1, 3)
@@ -505,12 +503,12 @@ shape = SubResource("CapsuleShape2D_madyp")
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
 
-[node name="Sword" type="Area2D" parent="Player"]
+[node name="Area2D" type="Area2D" parent="Player"]
 collision_layer = 2
 collision_mask = 4
 
-[node name="hitbox" type="CollisionShape2D" parent="Player/Sword"]
-position = Vector2(16, 1)
+[node name="hitbox" type="CollisionShape2D" parent="Player/Area2D"]
+position = Vector2(16, -1.5)
 shape = SubResource("RectangleShape2D_qrc5j")
 disabled = true
 
@@ -518,4 +516,4 @@ disabled = true
 position = Vector2(648, 374)
 
 [connection signal="animation_finished" from="Player/AnimatedSprite2D" to="Player" method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="body_entered" from="Player/Sword" to="Player" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Player/Area2D" to="Player" method="_on_area_2d_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://drwcjotr1dc7s"]
+[gd_scene load_steps=41 format=3 uid="uid://drwcjotr1dc7s"]
 
 [ext_resource type="Texture2D" uid="uid://b5pt20mp6agcy" path="res://Assets/Castle Platformer Tileset [16x16][FREE] - RottingPixels/castle-tileset.png" id="1_di0ux"]
 [ext_resource type="Script" path="res://Player.gd" id="2_t43jh"]
@@ -358,7 +358,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_it2mw")
 }],
-"loop": false,
+"loop": true,
 "name": &"attack",
 "speed": 10.0
 }, {
@@ -398,7 +398,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("17_4bate")
 }],
-"loop": false,
+"loop": true,
 "name": &"hit",
 "speed": 11.0
 }, {
@@ -446,7 +446,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump",
-"speed": 6.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -475,9 +475,6 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_madyp"]
 radius = 9.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qrc5j"]
-size = Vector2(16, 35.5)
-
 [node name="Game" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -494,9 +491,8 @@ script = ExtResource("2_t43jh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_o4veq")
-animation = &"attack"
-frame = 4
-frame_progress = 1.0
+animation = &"hit"
+frame_progress = 0.318257
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(-1, 3)
@@ -505,17 +501,7 @@ shape = SubResource("CapsuleShape2D_madyp")
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
 
-[node name="Sword" type="Area2D" parent="Player"]
-collision_layer = 2
-collision_mask = 4
-
-[node name="hitbox" type="CollisionShape2D" parent="Player/Sword"]
-position = Vector2(16, 1)
-shape = SubResource("RectangleShape2D_qrc5j")
-disabled = true
-
 [node name="Enemy" parent="." instance=ExtResource("36_20pj7")]
 position = Vector2(648, 374)
 
 [connection signal="animation_finished" from="Player/AnimatedSprite2D" to="Player" method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="body_entered" from="Player/Sword" to="Player" method="_on_area_2d_body_entered"]
